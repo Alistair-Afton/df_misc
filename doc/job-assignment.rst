@@ -180,6 +180,11 @@ zero at all times on this build — likely vestigial or debug-only in
 Open questions
 ==============
 
+- Per ab9rf (df-structures#908): the auction implementation is already
+  known to maintainers as ``worldst::handle_job_applications`` — not a
+  symbols.xml global, but reachable via Ghidra/xrefs. Decompiling it
+  would settle everything below; the sampler data provides ground-truth
+  inputs/outputs to check against.
 - Exact composition of the base score (distance metric, labor-match
   weighting, unit preferences) — the additive ~9.5k/14.5k/80k/etc.
   sub-bands are empirical, not decompiled.
@@ -188,6 +193,3 @@ Open questions
 - The 435k/615k band sources.
 - Whether a ``working`` (in-progress) job re-posted after interruption
   gets a resume bonus distinct from the ~1M continuation.
-- A decompilation pass over the scorer (find the heap-push call site,
-  then walk up) would settle all of the above; the sampler data
-  provides ground-truth inputs/outputs to check against.

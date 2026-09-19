@@ -176,6 +176,15 @@ trace the +0x14cf8-style member offsets). Useful landmarks in symbols.xml
 zero at all times on this build — likely vestigial or debug-only in
 53.16; do not rely on them.
 
+Detection landmark (per ab9rf, DFHack/scripts#1639):
+``worldst::handle_job_applications`` pushes a crashlog minidump entry
+of type ``0xf`` when it starts processing and removes it when done —
+polling the crashlog minidump list is a deterministic way to observe
+when an auction pass is in flight, complementing heap-size polling.
+The function is at ``0x140d0d4d0`` in v0.50.16 Steam/Windows (it
+takes a few days to relocate after each release; Linux builds are not
+analyzed because gcc output decompiles poorly).
+
 
 Open questions
 ==============
